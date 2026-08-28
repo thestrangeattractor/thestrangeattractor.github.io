@@ -14,9 +14,23 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-inner">
-                <img class="astro-icon" src="{{ '/assets/images/logo.png' | relative_url }}" alt="The Strange Attractor logo" />
-
-                <div class="logo">The Strange Attractor</div>
+                <!-- CIRCULAR LOGO WITH TEXT RING -->
+                <svg class="logo-ring" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#c4b5fd"/>
+                            <stop offset="50%" stop-color="#f9a8d4"/>
+                            <stop offset="100%" stop-color="#67e8f9"/>
+                        </linearGradient>
+                        <path id="textCircle" d="M 130, 130 m -115, 0 a 115,115 0 1,1 230,0 a 115,115 0 1,1 -230,0"/>
+                    </defs>
+                    <image href="{{ '/assets/images/logo.png' | relative_url }}" x="50" y="50" width="160" height="160"/>
+                    <text fill="url(#ringGradient)" textLength="680">
+                        <textPath href="#textCircle" startOffset="50%" text-anchor="middle" side="right">
+                            THE STRANGE ATTRACTOR
+                        </textPath>
+                    </text>
+                </svg>
 
                 <ul class="nav-menu">
                     <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}"><span class="icon">🚀</span> Home</a></li>
