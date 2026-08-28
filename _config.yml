@@ -1,0 +1,41 @@
+title: TENEBRAE
+description: >-
+  A cozy corner of the net for defensive security, threat detection,
+  and digital forensics. Grab some hot cocoa and stay a while.
+
+baseurl: ""
+url: "https://yourusername.github.io"
+
+# GitHub Pages / Jekyll
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# No theme — fully custom layouts and CSS
+# (GitHub Pages will use your _layouts/ files)
+
+# Pagination (GitHub Pages supports jekyll-paginate)
+paginate: 5
+paginate_path: "/page:num/"
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Excerpt separator
+excerpt_separator: <!--more-->
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fira+Code:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% feed_meta %}
+</head>
+<body>
+    <div class="wrapper">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <img class="astro-icon" src="{{ '/assets/images/logo.png' | relative_url }}" alt="Tenebrae logo" />
+
+                <div class="logo">TENEBRAE</div>
+
+                <ul class="nav-menu">
+                    <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}"><span class="icon">🚀</span> Home</a></li>
+                    <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url == '/about/' %}active{% endif %}"><span class="icon">🪐</span> About</a></li>
+                    <li><a href="{{ '/archive/' | relative_url }}"><span class="icon">📡</span> Archive</a></li>
+                    <li><a href="#"><span class="icon">🔭</span> Research</a></li>
+                    <li><a href="#"><span class="icon">🛸</span> Tools</a></li>
+                    <li><a href="{{ '/feed.xml' | relative_url }}"><span class="icon">🌠</span> RSS Feed</a></li>
+                </ul>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Explore Tags</div>
+                    <div class="tag-cloud">
+                        <span class="tag">malware</span>
+                        <span class="tag cyan">forensics</span>
+                        <span class="tag pink">threat-hunt</span>
+                        <span class="tag peach">yara</span>
+                        <span class="tag mint">sigma</span>
+                        <span class="tag">edr</span>
+                        <span class="tag cyan">memory</span>
+                        <span class="tag pink">apt</span>
+                        <span class="tag peach">linux</span>
+                        <span class="tag mint">windows</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">About</div>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                        A cozy little corner of the internet where we explore defensive security, threat detection, and digital forensics. Grab some hot cocoa and stay a while. 🌌
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            {{ content }}
+        </main>
+    </div>
+
+    <script>
+    // ── STAR FIELD + CONSTELLATION LINES ──
+    document.querySelectorAll('.post-content pre').forEach(pre => {
+        const field = document.createElement('div');
+        field.className = 'star-field';
+        const colors = ['#ffffff', '#c4b5fd', '#67e8f9', '#f9a8d4', '#fef3c7'];
+        const stars = [];
+        const starCount = 45;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 1;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = left + '%';
+            star.style.top = top + '%';
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            star.style.background = color;
+            star.style.setProperty('--twinkle-duration', (Math.random() * 2.5 + 1.2) + 's');
+            star.style.setProperty('--base-opacity', (Math.random() * 0.5 + 0.25).toFixed(2));
+            star.style.animationDelay = (Math.random() * 5) + 's';
+            if (Math.random() > 0.75) {
+                star.style.boxShadow = '0 0 3px 1px ' + color;
+            }
+            field.appendChild(star);
+            stars.push({ el: star, x: left, y: top, color });
+        }
+        pre.appendChild(field);
+
+        // Constellation SVG overlay
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('constellation-svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.setAttribute('viewBox', '0 0 100 100');
+        svg.setAttribute('preserveAspectRatio', 'none');
+        pre.appendChild(svg);
+
+        function drawConstellation(mx, my) {
+            svg.innerHTML = '';
+            const threshold = 18;
+            const mouseThreshold = 22;
+
+            for (let i = 0; i < stars.length; i++) {
+                for (let j = i + 1; j < stars.length; j++) {
+                    const dx = stars[i].x - stars[j].x;
+                    const dy = stars[i].y - stars[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    const midX = (stars[i].x + stars[j].x) / 2;
+                    const midY = (stars[i].y + stars[j].y) / 2;
+                    const distToMouse = Math.sqrt((midX - mx) ** 2 + (midY - my) ** 2);
+
+                    if (dist < threshold && distToMouse < mouseThreshold) {
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', stars[i].x);
+                        line.setAttribute('y1', stars[i].y);
+                        line.setAttribute('x2', stars[j].x);
+                        line.setAttribute('y2', stars[j].y);
+                        const opacity = Math.max(0, 1 - distToMouse / mouseThreshold) * 0.35;
+                        line.setAttribute('stroke', stars[i].color);
+                        line.setAttribute('stroke-width', '0.15');
+                        line.setAttribute('stroke-opacity', opacity.toFixed(3));
+                        svg.appendChild(line);
+                    }
+                }
+            }
+        }
+
+        pre.addEventListener('mousemove', (e) => {
+            const rect = pre.getBoundingClientRect();
+            const mx = ((e.clientX - rect.left) / rect.width) * 100;
+            const my = ((e.clientY - rect.top) / rect.height) * 100;
+            drawConstellation(mx, my);
+        });
+
+        pre.addEventListener('mouseleave', () => {
+            svg.innerHTML = '';
+        });
+    });
+
+    // ── LOGO PARALLAX TILT ──
+    const logo = document.querySelector('.astro-icon');
+    const sidebarInner = document.querySelector('.sidebar-inner');
+    if (logo && sidebarInner) {
+        sidebarInner.addEventListener('mousemove', (e) => {
+            const rect = sidebarInner.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const rotateY = (x - 0.5) * 20;
+            const rotateX = (0.5 - y) * 20;
+            logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+        sidebarInner.addEventListener('mouseleave', () => {
+            logo.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    }
+    </script>
+</body>
+</html>
