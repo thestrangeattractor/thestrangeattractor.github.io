@@ -123,12 +123,13 @@ body::before {
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 12px;
     font-weight: 800;
     text-align: center;
     margin-bottom: 18px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    line-height: 1.6;
     background: linear-gradient(135deg, var(--lavender), var(--pink), var(--cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -187,7 +188,8 @@ body::before {
 .sidebar-title {
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    line-height: 1.6;
     color: var(--text-muted);
     margin-bottom: 12px;
 }

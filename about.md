@@ -9,17 +9,17 @@ permalink: /about/
         <div class="btn btn-close"></div>
         <div class="btn btn-min"></div>
         <div class="btn btn-max"></div>
-        <div class="window-title">tenebrae: ~/about</div>
+        <div class="window-title">strange-attractor: ~/about</div>
     </div>
     <div class="terminal-body">
-        <h1 class="post-title">About TENEBRAE</h1>
+        <h1 class="post-title">About The Strange Attractor</h1>
         
         <div class="post-content">
             <p>
-                <strong>TENEBRAE</strong> is a cozy little corner of the internet dedicated to defensive security research, 
-                threat detection engineering, and digital forensics. Named after the Latin word for <em>shadows</em> — 
-                inspired by the mystery of the dark side of the moon — this blog explores the unseen artifacts left behind 
-                by adversaries in our systems and networks.
+                <strong>The Strange Attractor</strong> is a cozy little corner of the internet dedicated to defensive security research, 
+                threat detection engineering, and digital forensics. Named after a concept from chaos theory — 
+                a pattern that emerges from disorder, pulling systems toward an inevitable structure — 
+                this blog explores the hidden order in the chaos of adversary behavior.
             </p>
             
             <p>
