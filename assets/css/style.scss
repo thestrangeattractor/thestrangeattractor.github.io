@@ -85,6 +85,10 @@ body::before {
   transform-style: preserve-3d;
   max-height: calc(100vh - 60px);
   overflow-y: auto;
+  scrollbar-width: none;
+}
+.sidebar-inner::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── CIRCULAR LOGO + TITLE ── */
