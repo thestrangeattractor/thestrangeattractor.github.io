@@ -17,7 +17,7 @@ layout: default
                 {% if post.read_time %}<span>{{ post.read_time }}</span>{% endif %}
                 {% if post.category %}<span class="category-badge">{{ post.category }}</span>{% endif %}
             </div>
-            <h1 class="post-title">{{ post.title }}</h1>
+            <h1 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
         </header>
         <div class="post-content">
             {{ post.content }}
