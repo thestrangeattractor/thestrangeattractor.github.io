@@ -680,6 +680,32 @@ body::before {
   margin-bottom: 12px;
 }
 
+/* ── SIDEBAR STICKER + QUOTE ── */
+.sidebar-sticker {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(196, 181, 253, 0.1);
+}
+.sticker-img {
+  width: 80%;
+  max-width: 200px;
+  border-radius: 0;
+  opacity: 0.95;
+  display: block;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(196,181,253,0.2));
+}
+.sticker-quote {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #ffffff;
+  margin: 4px 0 0;
+  font-style: italic;
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .wrapper { flex-direction: column; padding: 16px; }
   .sidebar { width: 100%; }
