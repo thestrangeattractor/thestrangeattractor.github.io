@@ -2,56 +2,30 @@
 layout: default
 ---
 
-<!-- BLOG POST LIST -->
+{% for post in site.posts %}
 <div class="terminal-window">
     <div class="terminal-titlebar">
         <div class="btn btn-close"></div>
         <div class="btn btn-min"></div>
         <div class="btn btn-max"></div>
-        <div class="window-title">strange-attractor: ~/posts</div>
+        <div class="window-title">strange-attractor: ~/posts/{{ post.slug | default: post.title | slugify }}</div>
     </div>
     <div class="terminal-body">
-        <h1 class="post-title" style="margin-bottom: 24px;">Latest Transmissions</h1>
-
-        <div class="post-list">
-            {% for post in paginator.posts %}
-            <article class="post-preview">
-                <div class="preview-title">
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                </div>
-                <div class="preview-meta">
-                    🪐 {{ post.date | date: "%B %d, %Y" }}
-                    {% if post.read_time %}· {{ post.read_time }}{% endif %}
-                    {% if post.category %}· {{ post.category }}{% endif %}
-                </div>
-                <div class="preview-excerpt">
-                    {{ post.excerpt | strip_html | truncate: 180 }}
-                </div>
-                <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
-            </article>
-            {% endfor %}
+        <header class="post-header">
+            <div class="post-meta">
+                <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                {% if post.read_time %}<span>{{ post.read_time }}</span>{% endif %}
+                {% if post.category %}<span class="category-badge">{{ post.category }}</span>{% endif %}
+            </div>
+            <h1 class="post-title">{{ post.title }}</h1>
+        </header>
+        <div class="post-content">
+            {{ post.content }}
         </div>
-
-        {% if paginator.total_pages > 1 %}
-        <div class="pagination">
-            {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | relative_url }}">← Prev</a>
-            {% endif %}
-
-            {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                <span class="current">{{ page }}</span>
-                {% elsif page == 1 %}
-                <a href="{{ '/' | relative_url }}">{{ page }}</a>
-                {% else %}
-                <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-                {% endif %}
-            {% endfor %}
-
-            {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | relative_url }}">Next →</a>
-            {% endif %}
-        </div>
-        {% endif %}
+        <footer class="post-footer">
+            <div class="share-btn">🚀 Share this post</div>
+            <div class="share-btn">⭐ Bookmark</div>
+        </footer>
     </div>
 </div>
+{% endfor %}

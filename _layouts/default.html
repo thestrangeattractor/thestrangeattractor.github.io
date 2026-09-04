@@ -14,7 +14,7 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-inner">
-                <!-- CIRCULAR LOGO WITH TEXT RING -->
+                <!-- CIRCULAR LOGO WITH LETTERS IN A CIRCLE -->
                 <svg class="logo-ring" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -22,23 +22,39 @@
                             <stop offset="50%" stop-color="#f9a8d4"/>
                             <stop offset="100%" stop-color="#67e8f9"/>
                         </linearGradient>
-                        <path id="textCircle" d="M 130, 130 m -115, 0 a 115,115 0 1,1 230,0 a 115,115 0 1,1 -230,0"/>
                     </defs>
-                    <image href="{{ '/assets/images/logo.png' | relative_url }}" x="50" y="50" width="160" height="160"/>
-                    <text fill="url(#ringGradient)" textLength="680">
-                        <textPath href="#textCircle" startOffset="50%" text-anchor="middle" side="right">
-                            THE STRANGE ATTRACTOR
-                        </textPath>
-                    </text>
+                    <!-- Planet logo centered -->
+                    <image href="{{ site.baseurl }}/assets/images/logo.png" x="55" y="55" width="150" height="150"/>
+                    <!-- Letters arranged in a perfect circle around the logo -->
+                    <g id="spinning-ring">
+                        <animateTransform attributeName="transform" type="rotate" from="0 130 130" to="360 130 130" dur="20s" repeatCount="indefinite"/>
+            <text x="130.0" y="10.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(0.0 130.0 10.0)">T</text>
+            <text x="165.4" y="15.3" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(17.1 165.4 15.3)">H</text>
+            <text x="197.6" y="30.9" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(34.3 197.6 30.9)">E</text>
+            <text x="223.8" y="55.2" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(51.4 223.8 55.2)"> </text>
+            <text x="241.7" y="86.2" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(68.6 241.7 86.2)">S</text>
+            <text x="249.7" y="121.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(85.7 249.7 121.0)">T</text>
+            <text x="247.0" y="156.7" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(102.9 247.0 156.7)">R</text>
+            <text x="233.9" y="190.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(120.0 233.9 190.0)">A</text>
+            <text x="211.6" y="218.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(137.1 211.6 218.0)">N</text>
+            <text x="182.1" y="238.1" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(154.3 182.1 238.1)">G</text>
+            <text x="147.9" y="248.7" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(171.4 147.9 248.7)">E</text>
+            <text x="112.1" y="248.7" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(188.6 112.1 248.7)"> </text>
+            <text x="77.9" y="238.1" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(205.7 77.9 238.1)">A</text>
+            <text x="48.4" y="218.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(222.9 48.4 218.0)">T</text>
+            <text x="26.1" y="190.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(240.0 26.1 190.0)">T</text>
+            <text x="13.0" y="156.7" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(257.1 13.0 156.7)">R</text>
+            <text x="10.3" y="121.0" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(274.3 10.3 121.0)">A</text>
+            <text x="18.3" y="86.2" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(291.4 18.3 86.2)">C</text>
+            <text x="36.2" y="55.2" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(308.6 36.2 55.2)">T</text>
+            <text x="62.4" y="30.9" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(325.7 62.4 30.9)">O</text>
+            <text x="94.6" y="15.3" text-anchor="middle" dominant-baseline="central" fill="url(#ringGradient)" font-size="15px" font-family="'Press Start 2P', cursive" font-weight="800" letter-spacing="4px" transform="rotate(342.9 94.6 15.3)">R</text>
+                    </g>
                 </svg>
 
                 <ul class="nav-menu">
                     <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}"><span class="icon">🚀</span> Home</a></li>
-                    <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url == '/about/' %}active{% endif %}"><span class="icon">🪐</span> About</a></li>
-                    <li><a href="{{ '/archive/' | relative_url }}"><span class="icon">📡</span> Archive</a></li>
-                    <li><a href="#"><span class="icon">🔭</span> Research</a></li>
-                    <li><a href="#"><span class="icon">🛸</span> Tools</a></li>
-                    <li><a href="{{ '/feed.xml' | relative_url }}"><span class="icon">🌠</span> RSS Feed</a></li>
+                    <li><a href="https://www.linkedin.com/in/briabeathley/" target="_blank" rel="noopener noreferrer"><span class="icon">🪐</span> About</a></li>
                 </ul>
 
                 <div class="sidebar-section">

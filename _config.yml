@@ -1,10 +1,9 @@
 title: The Strange Attractor
 description: >-
-  A cozy corner of the net for defensive security, threat detection,
-  and digital forensics. Grab some hot cocoa and stay a while.
+  A cozy corner of the net for defensive security and digital forensics
 
 baseurl: ""
-url: "https://yourusername.github.io"
+url: "thestrangeattractor.github.io"
 
 # GitHub Pages / Jekyll
 plugins:
