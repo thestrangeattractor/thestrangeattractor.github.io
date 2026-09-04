@@ -209,6 +209,14 @@ body::before {
   color: var(--lavender);
   text-shadow: 0 0 12px rgba(196, 181, 253, 0.35);
 }
+.post-title a {
+  color: var(--lavender);
+  text-decoration: none;
+  border-bottom: none;
+}
+.post-title a:hover {
+  text-shadow: 0 0 20px rgba(196, 181, 253, 0.55);
+}
 .post-content { font-size: 16px; line-height: 1.8; color: var(--text); }
 .post-content p { margin-bottom: 18px; }
 .post-content h2 {
