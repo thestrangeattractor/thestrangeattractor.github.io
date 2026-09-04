@@ -41,7 +41,7 @@ body::before {
   content: '';
   position: fixed;
   top: -5%; left: -5%; right: -5%; bottom: -5%;
-  background: url('tenebrae-jekyll/assets/images/space-bg.jpg') center/cover no-repeat;
+  background: url('/assets/images/space-bg.jpg') center/cover no-repeat;
   z-index: -1;
   animation: melt 20s linear infinite;
   transform-origin: center center;
@@ -693,6 +693,3 @@ body::before {
   .profile-name { font-size: 14px; }
   .profile-photo-wrap { width: 100px; height: 100px; margin-top: -50px; }
 }
-  .preview-thumb { width: 140px; height: 140px; }
-}
-  

@@ -3,7 +3,7 @@ description: >-
   A cozy corner of the net for defensive security and digital forensics
 
 baseurl: ""
-url: "thestrangeattractor.github.io"
+url: "https://thestrangeattractor.github.io"
 
 # GitHub Pages / Jekyll
 plugins:
