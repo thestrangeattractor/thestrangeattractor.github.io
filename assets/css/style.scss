@@ -714,6 +714,31 @@ body::before {
   text-align: center;
 }
 
+/* ── MINI POST LIST ── */
+.mini-post-list {
+  list-style: none;
+}
+.mini-post-list li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.mini-post-list li:last-child {
+  margin-bottom: 0;
+}
+.mini-post-list a {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: block;
+  padding: 4px 0;
+  transition: all 0.2s;
+  border-bottom: none;
+}
+.mini-post-list a:hover {
+  color: var(--lavender);
+  text-shadow: 0 0 8px rgba(196, 181, 253, 0.3);
+}
+
 @media (max-width: 900px) {
   .wrapper { flex-direction: column; padding: 16px; }
   .sidebar { width: 100%; }

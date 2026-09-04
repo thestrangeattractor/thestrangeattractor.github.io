@@ -76,6 +76,15 @@
                     </div>
                 </div>
 
+                <div class="sidebar-section">
+                    <div class="sidebar-title">More Posts</div>
+                    <ul class="mini-post-list">
+                        {% for post in site.posts limit:4 %}
+                        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <div class="sidebar-section sidebar-sticker">
                     <img src="{{ site.baseurl }}/assets/images/tumblr_sticker.webp" alt="sticker" class="sticker-img" />
                     <p class="sticker-quote">"In space, no one can hear you scream... but your SIEM definitely can."</p>
