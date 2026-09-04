@@ -83,6 +83,8 @@ body::before {
   border: 1px solid rgba(196, 181, 253, 0.18);
   perspective: 600px;
   transform-style: preserve-3d;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
 /* ── CIRCULAR LOGO + TITLE ── */
