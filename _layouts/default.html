@@ -84,7 +84,7 @@
 
                 <div class="sidebar-section sidebar-sticker">
                     <img src="{{ site.baseurl }}/assets/images/tumblr_sticker.webp" alt="sticker" class="sticker-img" />
-                    <p class="sticker-quote">"In space, no one can hear you scream... but your SIEM definitely can."</p>
+                    <p class="sticker-quote" id="random-quote"></p>
                 </div>
             </div>
         </aside>
@@ -96,6 +96,19 @@
     </div>
 
     <script>
+    // ── RANDOM QUOTE ROTATION ──
+    const quotes = [
+        { text: "Beware; for I am fearless, and therefore powerful.", author: "Mary Shelley" },
+        { text: "Imagination will often carry us to worlds that never were. But without it we go nowhere.", author: "Carl Sagan" },
+        { text: "We are a way for the cosmos to know itself.", author: "Carl Sagan" },
+        { text: "The creative adult is the child who survived.", author: "Ursula K. Le Guin" }
+    ];
+    const quoteEl = document.getElementById('random-quote');
+    if (quoteEl) {
+        const q = quotes[Math.floor(Math.random() * quotes.length)];
+        quoteEl.innerHTML = '&ldquo;' + q.text + '&rdquo;<br><span class="quote-author">— ' + q.author + '</span>';
+    }
+
     // ── STAR FIELD + CONSTELLATION LINES ──
     document.querySelectorAll('.post-content pre').forEach(pre => {
         const field = document.createElement('div');
