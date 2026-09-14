@@ -60,16 +60,10 @@
                 <div class="sidebar-section">
                     <div class="sidebar-title">Explore Tags</div>
                     <div class="tag-cloud">
-                        <span class="tag">malware</span>
-                        <span class="tag cyan">forensics</span>
-                        <span class="tag pink">threat-hunt</span>
-                        <span class="tag peach">yara</span>
-                        <span class="tag mint">sigma</span>
-                        <span class="tag">edr</span>
-                        <span class="tag cyan">memory</span>
-                        <span class="tag pink">apt</span>
-                        <span class="tag peach">linux</span>
-                        <span class="tag mint">windows</span>
+                        {% assign tag_colors = "tag,tag cyan,tag pink,tag peach,tag mint" | split: "," %}
+                        {% for cat in site.categories %}
+                        <span class="{{ tag_colors[forloop.index0 | modulo: 5] }}">{{ cat[0] | downcase }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
