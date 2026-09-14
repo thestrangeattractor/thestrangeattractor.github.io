@@ -62,7 +62,8 @@
                     <div class="tag-cloud">
                         {% assign tag_colors = "tag,tag cyan,tag pink,tag peach,tag mint" | split: "," %}
                         {% for cat in site.categories %}
-                        <span class="{{ tag_colors[forloop.index0 | modulo: 5] }}">{{ cat[0] | downcase }}</span>
+                        {% assign color_idx = forloop.index0 | modulo: 5 %}
+                        <span class="{{ tag_colors[color_idx] }}">{{ cat[0] | downcase }}</span>
                         {% endfor %}
                     </div>
                 </div>
