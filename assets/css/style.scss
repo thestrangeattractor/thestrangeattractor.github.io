@@ -226,6 +226,35 @@ body::before {
   border-radius: 10px;
   margin: 1.25em auto;
 }
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: rgba(15, 13, 23, 0.9);
+  border: 1px solid rgba(196, 181, 253, 0.1);
+  border-radius: 4px;
+  font-size: 14px;
+}
+.post-content th {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--lavender);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(196, 181, 253, 0.2);
+  white-space: nowrap;
+}
+.post-content td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(196, 181, 253, 0.08);
+  color: var(--text);
+  vertical-align: top;
+}
+.post-content tr:last-child td { border-bottom: none; }
+.post-content tbody tr:hover { background: rgba(196, 181, 253, 0.05); }
 .post-content h2 {
   font-size: 16px; font-weight: 400; margin: 32px 0 16px;
   color: var(--lavender); font-family: 'Press Start 2P', cursive;
