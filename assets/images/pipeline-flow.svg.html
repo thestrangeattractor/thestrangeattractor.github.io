@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0f1a; }
+  svg { display: block; }
+  .title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #f2ecd9; letter-spacing: 6px; }
+  .subtitle { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #8f96b8; letter-spacing: 3px; }
+  .box { fill: #141b2e; stroke: #c9c9f2; stroke-width: 1.6; rx: 10; }
+  .box-red { fill: #2a1416; stroke: #e08080; stroke-width: 1.6; rx: 10; }
+  .box-teal { fill: #10231f; stroke: #7fd4c1; stroke-width: 1.6; rx: 10; }
+  .box-cyan { fill: #0f1e2a; stroke: #86c5e8; stroke-width: 1.6; rx: 10; }
+  .box-amber { fill: #241d10; stroke: #e0c080; stroke-width: 1.4; rx: 10; stroke-dasharray: 7 5; }
+  .decision { fill: #1c1830; stroke: #e0c080; stroke-width: 1.8; rx: 10; }
+  .lbl { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #f2ecd9; }
+  .lbl-sm { font: 400 12.5px 'Segoe UI', Arial, sans-serif; fill: #aab1d0; }
+  .lbl-red { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #f0b9b9; }
+  .lbl-teal { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #b9ecdf; }
+  .lbl-cyan { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #c2e4f7; }
+  .lbl-amber { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #ecd9ac; }
+  .edge { stroke: #7c86ad; stroke-width: 1.6; fill: none; }
+  .edge-label { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #8f96b8; }
+  .edge-label-red { font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #e08080; }
+  .edge-label-green { font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #9fd8a8; }
+  .caption { font: italic 400 13px 'Segoe UI', Arial, sans-serif; fill: #8f96b8; }
+</style>
+</head>
+<body>
+<svg width="1000" height="1330" viewBox="0 0 1000 1330" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c86ad"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e08080"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="1330" fill="#0b0f1a"/>
+  <text class="title" x="500" y="46" text-anchor="middle">PIPELINE FLOW</text>
+  <text class="subtitle" x="500" y="72" text-anchor="middle">STATIC MILESTONE · EVERY RUN STARTS CLEAN (RULE 5)</text>
+
+  <!-- 1 upload -->
+  <rect class="box" x="300" y="100" width="400" height="54"/>
+  <text class="lbl" x="500" y="133" text-anchor="middle">Upload sample via API</text>
+
+  <!-- 2 quarantine -->
+  <rect class="box" x="270" y="190" width="460" height="64"/>
+  <text class="lbl" x="500" y="216" text-anchor="middle">Stream to disk while hashing</text>
+  <text class="lbl-sm" x="500" y="238" text-anchor="middle">stored as var/samples/&lt;sha256&gt; · digest IS the ID · re-upload is a no-op</text>
+
+  <path class="edge" d="M 500 154 L 500 190" marker-end="url(#arrow)"/>
+
+  <!-- 3 decision -->
+  <rect class="decision" x="290" y="290" width="420" height="60"/>
+  <text class="lbl" x="500" y="316" text-anchor="middle">POST /jobs</text>
+  <text class="lbl-sm" x="500" y="336" text-anchor="middle">kind = detonation ?</text>
+
+  <path class="edge" d="M 500 254 L 500 290" marker-end="url(#arrow)"/>
+
+  <!-- left branch: detonation refused -->
+  <path class="edge" d="M 290 320 L 200 320 L 200 380" marker-end="url(#arrow-red)"/>
+  <text class="edge-label-red" x="222" y="308">yes</text>
+
+  <rect class="box-red" x="70" y="380" width="260" height="72"/>
+  <text class="lbl-red" x="200" y="408" text-anchor="middle">Record job row</text>
+  <text class="lbl-sm" x="200" y="428" text-anchor="middle">approval_state: pending</text>
+
+  <path class="edge" d="M 200 452 L 200 490" marker-end="url(#arrow-red)"/>
+
+  <rect class="box-red" x="70" y="490" width="260" height="72"/>
+  <text class="lbl-red" x="200" y="518" text-anchor="middle">HTTP 409 · refused</text>
+  <text class="lbl-sm" x="200" y="538" text-anchor="middle">no work order ever written</text>
+
+  <path class="edge" d="M 200 562 L 200 600" marker-end="url(#arrow-red)"/>
+
+  <rect class="box-amber" x="70" y="600" width="260" height="64"/>
+  <text class="lbl-amber" x="200" y="626" text-anchor="middle">Audit trail only</text>
+  <text class="lbl-sm" x="200" y="646" text-anchor="middle">who asked · when · dead end</text>
+
+  <!-- right branch: static job -->
+  <path class="edge" d="M 710 320 L 800 320 L 800 380" marker-end="url(#arrow)"/>
+  <text class="edge-label-green" x="724" y="308">no (static-only)</text>
+
+  <rect class="box" x="670" y="380" width="260" height="60"/>
+  <text class="lbl" x="800" y="406" text-anchor="middle">Postgres: job row</text>
+  <text class="lbl-sm" x="800" y="426" text-anchor="middle">state: queued</text>
+
+  <path class="edge" d="M 800 440 L 800 478" marker-end="url(#arrow)"/>
+
+  <rect class="box-cyan" x="670" y="478" width="260" height="72"/>
+  <text class="lbl-cyan" x="800" y="506" text-anchor="middle">Mint 3 pre-signed URLs</text>
+  <text class="lbl-sm" x="800" y="526" text-anchor="middle">one per tool · ~15 min expiry</text>
+
+  <path class="edge" d="M 800 550 L 800 588" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="670" y="588" width="260" height="76"/>
+  <text class="lbl" x="800" y="614" text-anchor="middle">Job spec JSON</text>
+  <text class="lbl-sm" x="800" y="634" text-anchor="middle">dropped in var/queue/ folder</text>
+  <text class="lbl-sm" x="800" y="652" text-anchor="middle">zero credentials inside</text>
+
+  <!-- merge to worker -->
+  <path class="edge" d="M 800 664 L 800 706 L 560 706 L 560 740" marker-end="url(#arrow)"/>
+
+  <!-- worker poll -->
+  <rect class="box" x="330" y="740" width="460" height="58"/>
+  <text class="lbl" x="560" y="766" text-anchor="middle">REMnux worker polls every 3 s</text>
+  <text class="lbl-sm" x="560" y="786" text-anchor="middle">unmodified stock image · internal network only</text>
+
+  <path class="edge" d="M 560 798 L 560 832" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="330" y="832" width="460" height="58"/>
+  <text class="lbl" x="560" y="858" text-anchor="middle">Atomic rename claims the job</text>
+  <text class="lbl-sm" x="560" y="878" text-anchor="middle">only one worker can take it</text>
+
+  <path class="edge" d="M 560 890 L 560 924" marker-end="url(#arrow)"/>
+
+  <rect class="box-teal" x="300" y="924" width="520" height="72"/>
+  <text class="lbl-teal" x="560" y="952" text-anchor="middle">Run capa · FLOSS · YARA</text>
+  <text class="lbl-sm" x="560" y="974" text-anchor="middle">sample mounted READ-ONLY · 120 s timeout per tool</text>
+
+  <!-- split to minio + claims -->
+  <path class="edge" d="M 430 996 L 360 996 L 360 1036" marker-end="url(#arrow)"/>
+  <path class="edge" d="M 690 996 L 760 996 L 760 1036" marker-end="url(#arrow)"/>
+
+  <rect class="box-cyan" x="220" y="1036" width="280" height="72"/>
+  <text class="lbl-cyan" x="360" y="1064" text-anchor="middle">Raw tool output → MinIO</text>
+  <text class="lbl-sm" x="360" y="1086" text-anchor="middle">via pre-signed PUT URLs</text>
+
+  <rect class="box" x="620" y="1036" width="280" height="72"/>
+  <text class="lbl" x="760" y="1064" text-anchor="middle">Claims appended</text>
+  <text class="lbl-sm" x="760" y="1086" text-anchor="middle">one log per case directory</text>
+
+  <!-- log -->
+  <path class="edge" d="M 760 1108 L 760 1150 L 560 1150 L 560 1184" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="260" y="1184" width="600" height="70"/>
+  <text class="lbl" x="560" y="1212" text-anchor="middle">Per-case log · var/cases/&lt;case_id&gt;/claims.jsonl</text>
+  <text class="lbl-sm" x="560" y="1234" text-anchor="middle">append-only · each claim hashes the previous (hash chain)</text>
+
+  <!-- tamper note -->
+  <text class="edge-label-red" x="500" y="1272" text-anchor="middle">edit any claim afterwards → the hash chain breaks, and anyone can recompute and prove it</text>
+
+  <!-- caption -->
+  <text class="caption" x="500" y="1306" text-anchor="middle">No credential exists anywhere on the worker path: only scoped, expiring URLs and read-only mounts.</text>
+</svg>
+</body>
+</html>
